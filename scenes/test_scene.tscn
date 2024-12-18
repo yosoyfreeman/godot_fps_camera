@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjxlw02gvht72"]
+
+[ext_resource type="Material" uid="uid://dshl1wol6b4e" path="res://scenes/base_material.tres" id="1_3mom3"]
+[ext_resource type="PackedScene" uid="uid://b5uy3nk4630n2" path="res://player/character_controller.tscn" id="2_hi7le"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wir4c"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_kqflw"]
+sky_material = SubResource("ProceduralSkyMaterial_wir4c")
+
+[sub_resource type="Environment" id="Environment_kyngj"]
+background_mode = 2
+sky = SubResource("Sky_kqflw")
+tonemap_mode = 3
+tonemap_exposure = 2.3
+tonemap_white = 1.46
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_cascades = 3
+sdfgi_min_cell_size = 0.1
+sdfgi_y_scale = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kyngj")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(16, 4, 16)
+material = ExtResource("1_3mom3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+size = Vector3(14, 4, 14)
+material = ExtResource("1_3mom3")
+
+[node name="CharacterController" parent="." instance=ExtResource("2_hi7le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[editable path="CharacterController"]
