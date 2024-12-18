@@ -7,7 +7,7 @@ A simple but professional FPS camera controller for Godot engine.
 - Joystick support with easing for fine control.
 - Heavily documented code.
 
-# TODO
+# TODO:
 
 - Comment a few things.
 
