@@ -35,6 +35,7 @@ shadow_enabled = true
 environment = SubResource("Environment_kyngj")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
 size = Vector3(16, 4, 16)
 material = ExtResource("1_3mom3")
 
@@ -45,6 +46,6 @@ size = Vector3(14, 4, 14)
 material = ExtResource("1_3mom3")
 
 [node name="CharacterController" parent="." instance=ExtResource("2_hi7le")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.79339, 0)
 
 [editable path="CharacterController"]
