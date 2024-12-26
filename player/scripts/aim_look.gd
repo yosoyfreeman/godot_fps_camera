@@ -178,7 +178,7 @@ func handle_jump():
 	if !is_on_floor():
 		return
 	
-	if !Input.is_action_just_pressed("ui_accept"):
+	if !Input.is_action_just_pressed("jump"):
 		return
 	
 	velocity += up_direction * jump_speed - velocity.project(up_direction)
