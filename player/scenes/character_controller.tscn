@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5uy3nk4630n2"]
+
+[ext_resource type="Script" path="res://player/src/aim_look.gd" id="1_pp0i7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ett2v"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nm318"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7wkt"]
+no_depth_test = true
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0, 0, 0, 1)
+texture_filter = 0
+texture_repeat = false
+disable_receive_shadows = true
+fixed_size = true
+
+[node name="CharacterController" type="CharacterBody3D" node_paths=PackedStringArray("head")]
+script = ExtResource("1_pp0i7")
+head = NodePath("Head")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ett2v")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="CameraContainer" type="Node3D" parent="Head"]
+
+[node name="Camera3D" type="Camera3D" parent="Head/CameraContainer"]
+
+[node name="Crosshair" type="MeshInstance3D" parent="Head/CameraContainer/Camera3D"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, -10)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_nm318")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_l7wkt")
