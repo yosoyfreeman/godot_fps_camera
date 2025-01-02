@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Achieving better mouse input in Godot 4: The perfect camera controller"
+config/name="Freeman's FPS template"
 run/main_scene="res://scenes/test_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
